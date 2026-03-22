@@ -1,0 +1,38 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    // LWJGL Core
+    implementation "org.lwjgl:lwjgl:3.3.3"
+    runtimeOnly "org.lwjgl:lwjgl:3.3.3:natives-windows"
+
+    // OpenGL
+    implementation "org.lwjgl:lwjgl-opengl:3.3.3"
+    runtimeOnly "org.lwjgl:lwjgl-opengl:3.3.3:natives-windows"
+
+    // GLFW (fenêtre + contexte OpenGL)
+    implementation "org.lwjgl:lwjgl-glfw:3.3.3"
+    runtimeOnly "org.lwjgl:lwjgl-glfw:3.3.3:natives-windows"
+
+    implementation "org.lwjgl:lwjgl-stb:3.3.3"
+    runtimeOnly "org.lwjgl:lwjgl-stb:3.3.3:natives-windows"
+
+    implementation "org.joml:joml:1.10.5"
+
+
+}
+
+application {
+    mainClass = 'minecraft.App'
+
+    applicationDefaultJvmArgs = [
+        "--add-modules", "jdk.unsupported"
+    ]
+}
