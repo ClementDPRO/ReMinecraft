@@ -13,7 +13,6 @@ public class Main {
 
     public static Boolean verify() {
         try {
-            Class.forName("javafx.application.Application");
             Class.forName("org.lwjgl.opengl.GL");
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Error: A library is not found or not install, please contact your administrator: " + e, "Error", JOptionPane.ERROR_MESSAGE);

@@ -2,6 +2,11 @@ plugins {
     id 'application'
 }
 
+application {
+    mainClass = 'minecraft.fr.clemdefrance.main'
+}
+
+
 repositories {
     mavenCentral()
 }
@@ -29,10 +34,18 @@ dependencies {
 
 }
 
-application {
-    mainClass = 'minecraft.App'
+tasks.withType(Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
-    applicationDefaultJvmArgs = [
-        "--add-modules", "jdk.unsupported"
-    ]
+    manifest {
+        attributes(
+            'Main-Class': 'minecraft.fr.clemdefrance.Main'
+        )
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
+
+
